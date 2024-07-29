@@ -18,8 +18,6 @@ export const ImageSwiper = ({
   autoplayTimeout = 5
 }: ImageSwiperProps) => {
   const width = Dimensions.get("window").width
-  console.log("width", width)
-  console.log(images, "images")
   return (
     <Carousel
       mode="parallax"
