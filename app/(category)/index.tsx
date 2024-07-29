@@ -10,7 +10,7 @@ import {
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { Button, Text } from "react-native-paper"
 import { ImageCarousel } from "../../components/carousel"
-export default function HomeScreen() {
+export default function CategoryScreen() {
   const hideSiteMap = false
   const data = [
     {
