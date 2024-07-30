@@ -8,7 +8,7 @@ type CarouselSectionProps = {
   }[]
 }
 
-export default function CategorySection({ data }: CarouselSectionProps) {
+export default function ExploreSectionSection({ data }: CarouselSectionProps) {
   const rows = Math.ceil(data.length / 2)
 
   return (
@@ -22,7 +22,7 @@ export default function CategorySection({ data }: CarouselSectionProps) {
                 style={styles.image}
                 resizeMode="cover"
               />
-              <Text style={styles.categoryTitle}>{item.title}</Text>
+              <Text style={styles.exploreTitle}>{item.title}</Text>
             </View>
           ))}
         </View>
@@ -32,7 +32,7 @@ export default function CategorySection({ data }: CarouselSectionProps) {
 }
 
 const styles = StyleSheet.create({
-  categoryTitle: {
+  exploreTitle: {
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",

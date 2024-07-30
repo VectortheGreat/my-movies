@@ -49,14 +49,14 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="category"
+          name="explore"
           options={{
             headerShown: false,
 
-            title: "Category",
+            title: "Explore",
             tabBarIcon: ({ color, focused }) => (
               <TabBarIcon
-                name={focused ? "book" : "book-outline"}
+                name={focused ? "search" : "search-outline"}
                 color={color}
               />
             )

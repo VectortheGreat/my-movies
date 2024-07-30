@@ -112,7 +112,7 @@ function CarouselSection({ title, data }: CarouselSectionProps) {
   }
   return (
     <View style={{ marginVertical: 10, flex: 1 }}>
-      <Text>{title}</Text>
+      <Text style={{ paddingHorizontal: 10 }}>{title}</Text>
       <ImageCarousel
         width={width}
         height={width / 2.3}
