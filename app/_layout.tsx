@@ -34,20 +34,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      {/* <Stack>
-        <Stack.Screen
-          name="(home)"
-          options={{ headerShown: false, headerTitle: "Home" }}
-        />
-        <Stack.Screen
-          name="(category)"
-          options={{ headerShown: false, headerTitle: "Home" }}
-        />
-        <Stack.Screen name="+not-found" />
-      </Stack> */}
       <Tabs>
         <Tabs.Screen
-          name="(home)"
+          name="home"
           options={{
             headerShown: false,
             title: "Home",
@@ -60,7 +49,7 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="(category)"
+          name="category"
           options={{
             headerShown: false,
 
@@ -75,6 +64,20 @@ export default function RootLayout() {
         />
         <Tabs.Screen
           name="+not-found"
+          options={{
+            headerShown: false,
+            title: "Not Found",
+            href: null,
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon
+                name={focused ? "home" : "home-outline"}
+                color={color}
+              />
+            )
+          }}
+        />
+        <Tabs.Screen
+          name="detail"
           options={{
             headerShown: false,
             title: "Not Found",

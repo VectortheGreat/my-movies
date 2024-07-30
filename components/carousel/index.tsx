@@ -25,21 +25,8 @@ export const ImageCarousel = ({
       data={data}
       loop
       scrollAnimationDuration={1000}
-      //   onSnapToItem={(index) => console.log("current index:", index)}
       {...props}
       renderItem={props.renderItem}
-      // renderItem={({ index, item }) => (
-      //   <View key={index} style={{ flex: 1 }}>
-      //     <Image
-      //       src={item.image}
-      //       style={{
-      //         width: "100%",
-      //         height: "100%",
-      //         borderRadius: 30
-      //       }}
-      //     />
-      //   </View>
-      // )}
     />
   )
 }

@@ -2,6 +2,7 @@ import { router } from "expo-router"
 import {
   Dimensions,
   Image,
+  Pressable,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -84,6 +85,10 @@ type CarouselSectionProps = {
 
 function CarouselSection({ title, data }: CarouselSectionProps) {
   const width = Dimensions.get("window").width
+  function handleNavigatePage() {
+    console.log(data)
+    router.push(`detail/${data[0].id}`)
+  }
   return (
     <View style={{ marginVertical: 10, flex: 1 }}>
       <Text>{title}</Text>
@@ -91,16 +96,19 @@ function CarouselSection({ title, data }: CarouselSectionProps) {
         width={width}
         height={width / 2.3}
         data={data}
+        autoPlay
         renderItem={({ index }) => (
-          <Image
-            source={{ uri: data[index].image }}
-            style={{
-              width: "100%",
-              height: "100%",
-              borderRadius: 30,
-              objectFit: "cover"
-            }}
-          />
+          <Pressable onPress={handleNavigatePage}>
+            <Image
+              source={{ uri: data[index].image }}
+              style={{
+                width: "100%",
+                height: "100%",
+                borderRadius: 30,
+                objectFit: "cover"
+              }}
+            />
+          </Pressable>
         )}
       />
     </View>
