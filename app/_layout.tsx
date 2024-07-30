@@ -90,6 +90,19 @@ export default function RootLayout() {
             )
           }}
         />
+        <Tabs.Screen
+          name="settings"
+          options={{
+            headerShown: true,
+            title: "Settings",
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon
+                name={focused ? "settings" : "settings-outline"}
+                color={color}
+              />
+            )
+          }}
+        />
       </Tabs>
     </ThemeProvider>
   )
