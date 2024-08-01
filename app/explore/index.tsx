@@ -1,8 +1,10 @@
 import { router } from "expo-router"
 import { useEffect, useState } from "react"
-import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
-import { Button, Searchbar, Text } from "react-native-paper"
+import { Button, Searchbar } from "react-native-paper"
+import { ThemedText } from "../../components/ThemedText"
+import { ThemedView } from "../../components/ThemedView"
 import ExploreSectionSection from "./sub_components/ExploreSection"
 export default function ExploreScreen() {
   const hideSiteMap = true
@@ -47,8 +49,10 @@ export default function ExploreScreen() {
           >
             Site Map
           </Button>
-          <View style={{ gap: 10 }}>
-            <Text style={styles.title}>Find Movies, Tv series, and more..</Text>
+          <ThemedView style={{ gap: 10 }}>
+            <ThemedText style={styles.title}>
+              Find Movies, Tv series, and more..
+            </ThemedText>
             <Searchbar
               placeholder="Search"
               onChangeText={setSearchQuery}
@@ -56,7 +60,7 @@ export default function ExploreScreen() {
               onSubmitEditing={() => console.log("Search")}
             />
             <ExploreSectionSection data={data} />
-          </View>
+          </ThemedView>
         </ScrollView>
       </GestureHandlerRootView>
     </SafeAreaView>

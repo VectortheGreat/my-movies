@@ -1,7 +1,8 @@
 import { router } from "expo-router"
-import { Dimensions, Image, Pressable, StyleSheet, View } from "react-native"
-import { Text } from "react-native-paper"
+import { Dimensions, Image, Pressable, StyleSheet } from "react-native"
 import { ImageCarousel } from "../../../components/carousel"
+import { ThemedText } from "../../../components/ThemedText"
+import { ThemedView } from "../../../components/ThemedView"
 type CarouselSectionProps = {
   title: string
   data: {
@@ -18,17 +19,19 @@ export default function CarouselSection({ title, data }: CarouselSectionProps) {
     router.push(`detail/${data[0].id}`)
   }
   return (
-    <View style={{ marginVertical: 10, flex: 1 }}>
-      <Text style={{ paddingHorizontal: 10, fontSize: 20, fontWeight: "bold" }}>
+    <ThemedView style={{ marginVertical: 10, flex: 1 }}>
+      <ThemedText
+        style={{ paddingHorizontal: 10, fontSize: 20, fontWeight: "bold" }}
+      >
         {title}
-      </Text>
+      </ThemedText>
       <ImageCarousel
         width={width}
         height={width / 2.3}
         data={data}
         autoPlay
         renderItem={({ index }) => (
-          <View style={styles.carouselContainer}>
+          <ThemedView style={styles.carouselContainer}>
             <Pressable onPress={handleNavigatePage}>
               <Image
                 source={{ uri: data[index].image }}
@@ -40,11 +43,11 @@ export default function CarouselSection({ title, data }: CarouselSectionProps) {
                 }}
               />
             </Pressable>
-            <Text style={styles.text}>{data[index].title}</Text>
-          </View>
+            <ThemedText style={styles.text}>{data[index].title}</ThemedText>
+          </ThemedView>
         )}
       />
-    </View>
+    </ThemedView>
   )
 }
 

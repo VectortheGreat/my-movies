@@ -9,8 +9,10 @@ import {
   View
 } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
-import { Button, Text } from "react-native-paper"
+import { Button } from "react-native-paper"
 import { ImageCarousel } from "../../components/carousel"
+import { ThemedText } from "../../components/ThemedText"
+import { ThemedView } from "../../components/ThemedView"
 export default function HomeScreen() {
   const hideSiteMap = true
   const data = [
@@ -49,9 +51,9 @@ export default function HomeScreen() {
           >
             Site Map
           </Button>
-          <View style={{ gap: 10 }}>
-            <Text style={styles.title}>My Movies</Text>
-            <View style={styles.homeImageContainer}>
+          <ThemedView style={{ gap: 10 }}>
+            <ThemedText style={styles.title}>My Movies</ThemedText>
+            <ThemedView style={styles.homeImageContainer}>
               <Image
                 src="https://images.wallpapersden.com/image/download/batman-cool-the-dark-knight_bmZpaWyUmZqaraWkpJRqbWdprWhna2k.jpg"
                 style={{
@@ -61,13 +63,13 @@ export default function HomeScreen() {
                   borderRadius: 20
                 }}
               />
-            </View>
-            <View>
+            </ThemedView>
+            <ThemedView>
               <CarouselSection title="Trending" data={data} />
               <CarouselSection title="Discover Global" data={data} />
               <CarouselSection title="Discover Local" data={data} />
-            </View>
-          </View>
+            </ThemedView>
+          </ThemedView>
         </ScrollView>
       </GestureHandlerRootView>
     </SafeAreaView>
@@ -89,8 +91,8 @@ function CarouselSection({ title, data }: CarouselSectionProps) {
     router.push(`detail/${data[0].id}`)
   }
   return (
-    <View style={{ marginVertical: 10, flex: 1 }}>
-      <Text style={styles.carouselTitle}>{title}</Text>
+    <ThemedView style={{ marginVertical: 10, flex: 1 }}>
+      <ThemedText style={styles.carouselTitle}>{title}</ThemedText>
       <ImageCarousel
         width={width}
         height={width / 2.3}
@@ -101,13 +103,15 @@ function CarouselSection({ title, data }: CarouselSectionProps) {
             <View style={styles.imageContainer}>
               <Image source={{ uri: data[index].image }} style={styles.image} />
               <View style={styles.textContainer}>
-                <Text style={styles.imageText}>{data[index].title}</Text>
+                <ThemedText style={styles.imageText}>
+                  {data[index].title}
+                </ThemedText>
               </View>
             </View>
           </Pressable>
         )}
       />
-    </View>
+    </ThemedView>
   )
 }
 

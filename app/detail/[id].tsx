@@ -1,8 +1,10 @@
 import { EvilIcons, FontAwesome } from "@expo/vector-icons"
 import { useGlobalSearchParams } from "expo-router"
-import { Image, SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
+import { Image, SafeAreaView, ScrollView, StyleSheet } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
-import { Divider, Text } from "react-native-paper"
+import { Divider } from "react-native-paper"
+import { ThemedText } from "../../components/ThemedText"
+import { ThemedView } from "../../components/ThemedView"
 import CarouselSection from "./sub_components/CarouselSection"
 export default function DetailScreen() {
   const { id } = useGlobalSearchParams()
@@ -21,8 +23,8 @@ export default function DetailScreen() {
     >
       <GestureHandlerRootView>
         <ScrollView>
-          <View style={{ gap: 10 }}>
-            <View>
+          <ThemedView style={{ gap: 10 }}>
+            <ThemedView>
               <Image
                 src={data.image}
                 style={{
@@ -30,44 +32,44 @@ export default function DetailScreen() {
                   height: 200
                 }}
               />
-              <Text style={styles.title}>{data.title}</Text>
-              <View style={styles.infoContainer}>
-                <View style={styles.iconTextContainer}>
-                  <Text>152 minutes</Text>
+              <ThemedText style={styles.title}>{data.title}</ThemedText>
+              <ThemedView style={styles.infoContainer}>
+                <ThemedView style={styles.iconTextContainer}>
+                  <ThemedText>152 minutes</ThemedText>
                   <EvilIcons name="clock" size={20} color="black" />
-                </View>
-                <View style={styles.iconTextContainer}>
-                  <Text>7.10(IMDB)</Text>
+                </ThemedView>
+                <ThemedView style={styles.iconTextContainer}>
+                  <ThemedText>7.10(IMDB)</ThemedText>
                   <FontAwesome name="star" size={20} color="black" />
-                </View>
-              </View>
-            </View>
+                </ThemedView>
+              </ThemedView>
+            </ThemedView>
             <Divider />
-            <View style={styles.infoContainer}>
-              <View style={styles.dateGenreContainer}>
-                <Text>Release Date</Text>
-                <Text>01-01-2022</Text>
-              </View>
-              <View style={styles.dateGenreContainer}>
-                <Text style={{ textAlign: "center" }}>Genre</Text>
-                <View style={{ flexDirection: "row", gap: 6 }}>
-                  <Text style={styles.genre}>Action</Text>
-                  <Text style={styles.genre}>Action</Text>
-                </View>
-              </View>
-            </View>
-            <View style={{ paddingHorizontal: 15, gap: 10 }}>
-              <Text style={styles.subtitle}>Synopsis</Text>
-              <Text>
+            <ThemedView style={styles.infoContainer}>
+              <ThemedView style={styles.dateGenreContainer}>
+                <ThemedText>Release Date</ThemedText>
+                <ThemedText>01-01-2022</ThemedText>
+              </ThemedView>
+              <ThemedView style={styles.dateGenreContainer}>
+                <ThemedText style={{ textAlign: "center" }}>Genre</ThemedText>
+                <ThemedView style={{ flexDirection: "row", gap: 6 }}>
+                  <ThemedText style={styles.genre}>Action</ThemedText>
+                  <ThemedText style={styles.genre}>Action</ThemedText>
+                </ThemedView>
+              </ThemedView>
+            </ThemedView>
+            <ThemedView style={{ paddingHorizontal: 15, gap: 10 }}>
+              <ThemedText style={styles.subtitle}>Synopsis</ThemedText>
+              <ThemedText>
                 A listless Wade Wilson toils away in civilian life with his days
                 as the morally flexible mercenary, Deadpool, behind him. But
                 when his homeworld faces an existential threat, Wade must
                 reluctantly suit-up again with an even more reluctant Wolverine.
-              </Text>
-            </View>
+              </ThemedText>
+            </ThemedView>
             <CarouselSection title="Related Movies" data={[data]} />
             <CarouselSection title="Recommendations" data={[data]} />
-          </View>
+          </ThemedView>
         </ScrollView>
       </GestureHandlerRootView>
     </SafeAreaView>

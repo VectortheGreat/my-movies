@@ -1,8 +1,10 @@
 import { Picker } from "@react-native-picker/picker"
 import { useEffect, useState } from "react"
-import { NativeModules, SafeAreaView, StyleSheet, View } from "react-native"
-import { Text } from "react-native-paper"
+import { NativeModules, SafeAreaView, StyleSheet } from "react-native"
+import { ThemedText } from "../../components/ThemedText"
+import { ThemedView } from "../../components/ThemedView"
 import { regions } from "../../utils/regions"
+
 export default function SettingsScreen() {
   const [selectedLanguage, setSelectedLanguage] = useState("en")
   const [selectedRegion, setSelectedRegion] = useState("us")
@@ -14,7 +16,7 @@ export default function SettingsScreen() {
     <SafeAreaView style={styles.container}>
       <Row>
         <>
-          <Text>Language</Text>
+          <ThemedText>Language</ThemedText>
           <Picker
             mode="dropdown"
             style={{ width: 150 }}
@@ -28,7 +30,7 @@ export default function SettingsScreen() {
       </Row>
       <Row>
         <>
-          <Text>Region</Text>
+          <ThemedText>Region</ThemedText>
           <Picker
             style={{ width: 150 }}
             selectedValue={selectedRegion}
@@ -50,7 +52,7 @@ export default function SettingsScreen() {
 
 function Row({ children }: { children: React.ReactNode }) {
   return (
-    <View
+    <ThemedView
       style={{
         flexDirection: "row",
         justifyContent: "space-between",
@@ -58,7 +60,7 @@ function Row({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </View>
+    </ThemedView>
   )
 }
 
