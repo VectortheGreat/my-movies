@@ -2,11 +2,7 @@ import React from "react"
 import Carousel, { TCarouselProps } from "react-native-reanimated-carousel"
 
 type ImageSwiperProps = {
-  data: {
-    id: number
-    title: string
-    image: string
-  }[]
+  data: any[]
   mode?: "parallax" | "horizontal-stack" | "vertical-stack"
 } & TCarouselProps<any>
 

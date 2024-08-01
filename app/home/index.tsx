@@ -13,35 +13,14 @@ import { Button } from "react-native-paper"
 import { ImageCarousel } from "../../components/carousel"
 import { ThemedText } from "../../components/ThemedText"
 import { ThemedView } from "../../components/ThemedView"
+import { AppContextProps, useAppContext } from "../../context/app_context"
 export default function HomeScreen() {
   const hideSiteMap = true
-  const data = [
-    {
-      id: 1,
-      title: "Star Wars Battlefront 2",
-      image:
-        "https://e1.pxfuel.com/desktop-wallpaper/485/771/desktop-wallpaper-hollywood-movie-group-live-action-movies.jpg"
-    },
-    {
-      id: 2,
-      title: "Hogwarts Legacy",
-      image:
-        "https://wallpapers.com/images/featured/movie-background-4saldhgir0h87q13.jpg"
-    },
-    {
-      id: 3,
-      title: "Game of Thrones",
-      image:
-        "https://wallpapers.com/images/featured/movie-background-4saldhgir0h87q13.jpg"
-    }
-  ]
+  const { trendingMovies, discoverLocalMovies, discoverGlobalMovies } =
+    useAppContext()
+  console.log("trendingMovies", trendingMovies)
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        marginTop: 40
-      }}
-    >
+    <SafeAreaView style={{ flex: 1, marginTop: 40 }}>
       <GestureHandlerRootView>
         <ScrollView>
           <Button
@@ -65,9 +44,15 @@ export default function HomeScreen() {
               />
             </ThemedView>
             <ThemedView>
-              <CarouselSection title="Trending" data={data} />
-              <CarouselSection title="Discover Global" data={data} />
-              <CarouselSection title="Discover Local" data={data} />
+              <CarouselSection title="Trending" data={trendingMovies} />
+              <CarouselSection
+                title="Discover Global"
+                data={discoverGlobalMovies}
+              />
+              <CarouselSection
+                title="Discover Local"
+                data={discoverLocalMovies}
+              />
             </ThemedView>
           </ThemedView>
         </ScrollView>
@@ -78,11 +63,7 @@ export default function HomeScreen() {
 
 type CarouselSectionProps = {
   title: string
-  data: {
-    id: number
-    title: string
-    image: string
-  }[]
+  data: AppContextProps["trendingMovies"]
 }
 
 function CarouselSection({ title, data }: CarouselSectionProps) {
@@ -101,10 +82,13 @@ function CarouselSection({ title, data }: CarouselSectionProps) {
         renderItem={({ index }) => (
           <Pressable onPress={handleNavigatePage}>
             <View style={styles.imageContainer}>
-              <Image source={{ uri: data[index].image }} style={styles.image} />
+              <Image
+                source={{ uri: data[index].poster_path }}
+                style={styles.image}
+              />
               <View style={styles.textContainer}>
                 <ThemedText style={styles.imageText}>
-                  {data[index].title}
+                  {data[index].original_title}
                 </ThemedText>
               </View>
             </View>

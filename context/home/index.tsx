@@ -1,32 +1,32 @@
 import { appContextDefaultValues, AppContextProps } from "@/context/app_context"
 import { createContext, useContext } from "react"
 
-export type AuthLoginPageContextProps = AppContextProps
+export type HomePageContextProps = AppContextProps
 
-export const authLoginPageDefaultValues: AuthLoginPageContextProps = {
+export const homePageDefaultValues: HomePageContextProps = {
   ...appContextDefaultValues
 }
 
-const AuthLoginPageContext = createContext(authLoginPageDefaultValues)
+const HomePageContext = createContext(homePageDefaultValues)
 
-export function AuthLoginPageContextProvider(props: {
+export function HomePageContextProvider(props: {
   children: React.ReactNode | React.ReactNode[]
 }) {
   return (
-    <AuthLoginPageContext.Provider
+    <HomePageContext.Provider
       value={{
-        ...authLoginPageDefaultValues
+        ...homePageDefaultValues
       }}
     >
       {props.children}
-    </AuthLoginPageContext.Provider>
+    </HomePageContext.Provider>
   )
 }
 
-export function useAuthLoginPageContext() {
-  const context = useContext(AuthLoginPageContext)
+export function useHomePageContext() {
+  const context = useContext(HomePageContext)
   if (context === undefined) {
-    throw new Error("AuthLoginPage Context Error")
+    throw new Error("HomePage Context Error")
   }
   return context
 }
