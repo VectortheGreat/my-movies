@@ -1,16 +1,8 @@
-import { router, useGlobalSearchParams } from "expo-router"
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  View
-} from "react-native"
+import { useGlobalSearchParams } from "expo-router"
+import { Image, SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { Divider, Text } from "react-native-paper"
-import { ImageCarousel } from "../../components/carousel"
+import CarouselSection from "./sub_components/CarouselSection"
 export default function DetailScreen() {
   const { id } = useGlobalSearchParams()
   const data = {
@@ -37,7 +29,7 @@ export default function DetailScreen() {
                   height: 200
                 }}
               />
-              <Text style={{ padding: 10 }}>{data.title}</Text>
+              <Text style={styles.title}>{data.title}</Text>
               <View style={{ flexDirection: "row" }}>
                 <Text style={{ padding: 10 }}>152 minutes</Text>
                 <Text style={{ padding: 10 }}>7.10(IMDB)</Text>
@@ -95,51 +87,8 @@ export default function DetailScreen() {
   )
 }
 
-type CarouselSectionProps = {
-  title: string
-  data: {
-    id: number
-    title: string
-    image: string
-  }[]
-}
-
-function CarouselSection({ title, data }: CarouselSectionProps) {
-  const width = Dimensions.get("window").width
-  function handleNavigatePage() {
-    console.log(data)
-    router.push(`detail/${data[0].id}`)
-  }
-  return (
-    <View style={{ marginVertical: 10, flex: 1 }}>
-      <Text style={{ paddingHorizontal: 10 }}>{title}</Text>
-      <ImageCarousel
-        width={width}
-        height={width / 2.3}
-        data={data}
-        autoPlay
-        renderItem={({ index }) => (
-          <View>
-            <Pressable onPress={handleNavigatePage}>
-              <Image
-                source={{ uri: data[index].image }}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: 30,
-                  objectFit: "cover"
-                }}
-              />
-            </Pressable>
-          </View>
-        )}
-      />
-    </View>
-  )
-}
-
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", padding: 2 },
+  title: { fontSize: 24, fontWeight: "bold", padding: 10 },
   carouselContainer: {
     backgroundColor: "red",
     margin: 0
