@@ -1,3 +1,4 @@
+import { EvilIcons, FontAwesome } from "@expo/vector-icons"
 import { useGlobalSearchParams } from "expo-router"
 import { Image, SafeAreaView, ScrollView, StyleSheet, View } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
@@ -30,48 +31,34 @@ export default function DetailScreen() {
                 }}
               />
               <Text style={styles.title}>{data.title}</Text>
-              <View style={{ flexDirection: "row" }}>
-                <Text style={{ padding: 10 }}>152 minutes</Text>
-                <Text style={{ padding: 10 }}>7.10(IMDB)</Text>
-              </View>
-            </View>
-            <Divider />
-            <View style={{ flexDirection: "row" }}>
-              <View>
-                <Text style={{ padding: 10 }}>Release Date</Text>
-                <Text style={{ padding: 10 }}>01-01-2022</Text>
-              </View>
-              <View>
-                <Text style={{ padding: 10 }}>Genre</Text>
-                <View style={{ flexDirection: "row", gap: 6 }}>
-                  <Text
-                    style={{
-                      padding: 10,
-                      backgroundColor: "black",
-                      color: "white",
-                      borderRadius: 5,
-                      shadowColor: "black"
-                    }}
-                  >
-                    Action
-                  </Text>
-                  <Text
-                    style={{
-                      padding: 10,
-                      backgroundColor: "black",
-                      color: "white",
-                      borderRadius: 5,
-                      shadowColor: "black"
-                    }}
-                  >
-                    Action
-                  </Text>
+              <View style={styles.infoContainer}>
+                <View style={styles.iconTextContainer}>
+                  <Text>152 minutes</Text>
+                  <EvilIcons name="clock" size={20} color="black" />
+                </View>
+                <View style={styles.iconTextContainer}>
+                  <Text>7.10(IMDB)</Text>
+                  <FontAwesome name="star" size={20} color="black" />
                 </View>
               </View>
             </View>
-            <View>
-              <Text style={{ padding: 10 }}>Synopsis</Text>
-              <Text style={{ padding: 10 }}>
+            <Divider />
+            <View style={styles.infoContainer}>
+              <View style={styles.dateGenreContainer}>
+                <Text>Release Date</Text>
+                <Text>01-01-2022</Text>
+              </View>
+              <View style={styles.dateGenreContainer}>
+                <Text style={{ textAlign: "center" }}>Genre</Text>
+                <View style={{ flexDirection: "row", gap: 6 }}>
+                  <Text style={styles.genre}>Action</Text>
+                  <Text style={styles.genre}>Action</Text>
+                </View>
+              </View>
+            </View>
+            <View style={{ paddingHorizontal: 15, gap: 10 }}>
+              <Text style={styles.subtitle}>Synopsis</Text>
+              <Text>
                 A listless Wade Wilson toils away in civilian life with his days
                 as the morally flexible mercenary, Deadpool, behind him. But
                 when his homeworld faces an existential threat, Wade must
@@ -88,9 +75,21 @@ export default function DetailScreen() {
 }
 
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: "bold", padding: 10 },
-  carouselContainer: {
-    backgroundColor: "red",
-    margin: 0
-  }
+  title: { fontSize: 24, fontWeight: "bold", padding: 10, textAlign: "center" },
+  infoContainer: { flexDirection: "row", justifyContent: "space-around" },
+  iconTextContainer: {
+    display: "flex",
+    flexDirection: "row",
+    padding: 10,
+    gap: 2
+  },
+  dateGenreContainer: { gap: 10, textAlign: "center" },
+  genre: {
+    padding: 9,
+    backgroundColor: "#262626",
+    color: "white",
+    borderRadius: 20,
+    shadowColor: "black"
+  },
+  subtitle: { fontSize: 20, fontWeight: "bold" }
 })

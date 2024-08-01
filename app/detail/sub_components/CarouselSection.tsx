@@ -1,5 +1,5 @@
 import { router } from "expo-router"
-import { Dimensions, Image, Pressable, View } from "react-native"
+import { Dimensions, Image, Pressable, StyleSheet, View } from "react-native"
 import { Text } from "react-native-paper"
 import { ImageCarousel } from "../../../components/carousel"
 type CarouselSectionProps = {
@@ -10,23 +10,25 @@ type CarouselSectionProps = {
     image: string
   }[]
 }
+const width = Dimensions.get("window").width
 
 export default function CarouselSection({ title, data }: CarouselSectionProps) {
-  const width = Dimensions.get("window").width
   function handleNavigatePage() {
     console.log(data)
     router.push(`detail/${data[0].id}`)
   }
   return (
     <View style={{ marginVertical: 10, flex: 1 }}>
-      <Text style={{ paddingHorizontal: 10 }}>{title}</Text>
+      <Text style={{ paddingHorizontal: 10, fontSize: 20, fontWeight: "bold" }}>
+        {title}
+      </Text>
       <ImageCarousel
         width={width}
         height={width / 2.3}
         data={data}
         autoPlay
         renderItem={({ index }) => (
-          <View>
+          <View style={styles.carouselContainer}>
             <Pressable onPress={handleNavigatePage}>
               <Image
                 source={{ uri: data[index].image }}
@@ -38,9 +40,20 @@ export default function CarouselSection({ title, data }: CarouselSectionProps) {
                 }}
               />
             </Pressable>
+            <Text style={styles.text}>{data[index].title}</Text>
           </View>
         )}
       />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  carouselContainer: { width, height: width / 2.3, marginHorizontal: 10 },
+  text: {
+    paddingVertical: 5,
+    textAlign: "center",
+    fontSize: 16,
+    fontWeight: "bold"
+  }
+})
